@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form </title>
+    <link rel="stylesheet" href="studentform.css">
+</head>
+<body>
+    <center>
+        <h1>Student Registration Form</h1>
+        <table border="4">
+                <tr >
+                    <th> NAME </th>
+                    <td><input type="text" name="fname" id="name" ></td>
+                </tr>
+                <tr>
+                    <th> AGE </th>
+                    <td><input type="text" name="age" id="age"> </td>
+                </tr>
+                <tr>
+                    <th> GENDER </th>
+                    <td ><input type = "radio" name="gender" value="Male" id="gender-male"/>Male
+                    <input type = "radio" name="gender" value="Female" id="gender-female"/>Female</td>
+                </tr>
+                <tr id="courseid">
+                    <th> COURSE </th>
+                    <td>  
+                         <select id="course">
+                          <option value="Javascript"> javascript</option>
+                          <option value="Java"> java</option>
+                          <option value="python"> python</option>
+                          <option value="C++"> c++</option>
+                          <option value="php"> php</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th> EMAIL </th>
+                    <td><input type="email" name="email" id="email" ></td>
+                </tr>
+                
+                <tr id="btna">
+                    <td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow()"></td>
+                </tr>
+                
+                
+        </table>
+        <table border="4" id="show">
+         <tr>
+            <th> NAME</th>
+            <th> AGE </th>
+            <th> GENDER</th>
+            <th> COURSE</th>
+            <th> EMAIL</th>
+            <!-- <th> ACTION </th>  -->
+        </tr>  
+        </table>
+</center>
+<script>
+    var row = 1 ;
+    var btna = document.getElementById("btna");
+    btna.addEventListener("click", AddRow());
+
+    function AddRow(){
+        var name = document.getElementById("name").value
+        var age = document.getElementById("age").value
+        var email = document.getElementById("email").value
+        var gender = document.querySelector('input[name="gender"]:checked').value ;
+        var course = document.getElementById("course").value;
+       
+        var deleteButton= document.getElementById("delete"); 
+          
+        if(!name || !age|| !email|| !course|| !gender){
+        alert("please fill the above details");
+        return;
+        }
+
+        var display = document.getElementById("show");
+
+        var newRow = display.insertRow(row);
+        
+        var cell1=newRow.insertCell(0);
+        var cell2=newRow.insertCell(1);
+        var cell3=newRow.insertCell(2);
+        var cell4=newRow.insertCell(3);
+        var cell5=newRow.insertCell(4);
+       
+
+
+        cell1.innerHTML = name;
+        cell2.innerHTML= age;
+        cell3.innerHTML=gender;
+        cell4.innerHTML=course;
+        cell5.innerHTML = email;
+        
+
+        row++;
+        
+
+    }
+
+
+</script>
+</body>
